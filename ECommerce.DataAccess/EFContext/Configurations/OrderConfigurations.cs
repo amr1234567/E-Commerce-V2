@@ -35,6 +35,12 @@ namespace ECommerce.DataAccess.EFContext.Configurations
                     p => (PaymentMethod)Enum.Parse(typeof(PaymentMethod), p)
                 );
 
+            builder.Property(b => b.OrderStatus)
+               .HasConversion(
+                   p => p.ToString(),
+                   p => (OrderStatus)Enum.Parse(typeof(OrderStatus), p)
+               );
+
 
 
             builder.HasMany(b => b.OrderLogs)

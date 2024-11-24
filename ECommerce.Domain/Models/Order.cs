@@ -36,6 +36,9 @@ namespace ECommerce.Domain.Models
         [Required]
         public PaymentMethod PaymentMethod { get; set; }
 
+        [Required]
+        public OrderStatus OrderStatus { get; set; }
+
         public int? DiscountId { get; set; }
         [ForeignKey(nameof(DiscountId))]
         public Discount? Discount { get; set; }
