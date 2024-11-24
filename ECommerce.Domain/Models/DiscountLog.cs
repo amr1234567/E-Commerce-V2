@@ -1,5 +1,4 @@
-﻿using ECommerce.Domain.Base;
-using ECommerce.Domain.Identity;
+﻿using ECommerce.Domain.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,19 +9,22 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Domain.Models
 {
-    public class WishList : BaseClass
+    public class DiscountLog
     {
         [Required]
-        [StringLength(50)]
-        public string Name { get; set; }
+        public int DiscountId { get; set; }
+        [Required]
+        [ForeignKey(nameof(DiscountId))]
+        public Discount Discount { get; set; }
 
-        [StringLength(255)]
-        public string? Description { get; set; }
-
+        [Required]
         public int CustomerId { get; set; }
         [ForeignKey(nameof(CustomerId))]
+        [Required]
         public Customer Customer { get; set; }
 
-        public List<Product>? Products { get; set; }
+        [Required]
+        public DateTime AppliedDate { get; set; } 
+        
     }
 }

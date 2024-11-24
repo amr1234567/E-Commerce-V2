@@ -18,6 +18,9 @@ namespace ECommerce.DataAccess.EFContext.Configurations
                 .HasForeignKey(o => o.BasketId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasIndex(b => b.CustomerId)
+                .IsClustered();
         }
     }
 }

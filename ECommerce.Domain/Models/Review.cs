@@ -1,5 +1,5 @@
-﻿using ECommerce.Domain.Identity;
-using ECommerce.Domain.Models.Base;
+﻿using ECommerce.Domain.Base;
+using ECommerce.Domain.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -30,6 +30,10 @@ namespace ECommerce.Domain.Models
         public int? ProductId { get; set; }
         [ForeignKey(nameof(ProductId))]
         public Product? Product { get; set; }
+
+        public int? DeliveryManId { get; set; }
+        [ForeignKey(nameof(DeliveryManId))]
+        public DeliveryMan? DeliveryMan { get; set; }
     }
 }
  

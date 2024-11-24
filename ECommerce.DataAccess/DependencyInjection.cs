@@ -5,11 +5,6 @@ using ECommerce.Domain.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ECommerce.DataAccess
 {
@@ -23,7 +18,21 @@ namespace ECommerce.DataAccess
             });
 
             services.AddSingleton<AppDapperContext>();
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IAdminRepository, AdminRepository>();
+            services.AddScoped<IBasketRepository, BasketRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IDeliveryManRepository, DeliveryManRepository>();
+            services.AddScoped<IDiscountRepository, DiscountRepository>();
+            services.AddScoped<IReviewRepository, ReviewRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IProviderRepository, ProviderRepository>();
+            services.AddScoped<ITicketRepository, TicketRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IWishListRepository, WishListRepository>();
 
             return services;
         }

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECommerce.Domain.Models.Base
+namespace ECommerce.Domain.Base
 {
-    public class BaseClass 
+    public class BaseClass
     {
         [Key]
         public int Id { get; set; }

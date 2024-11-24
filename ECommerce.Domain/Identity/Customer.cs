@@ -1,6 +1,6 @@
-﻿using ECommerce.Domain.ComplexObjects;
+﻿using ECommerce.Domain.Base;
+using ECommerce.Domain.ComplexObjects;
 using ECommerce.Domain.Models;
-using ECommerce.Domain.Models.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -38,5 +38,7 @@ namespace ECommerce.Domain.Identity
         public List<Provider>? FavProviders { get; set; }
 
         public List<Ticket>? Tickets { get; set; }
+
+        public List<Discount>? Discounts { get; set; }
     }
 }

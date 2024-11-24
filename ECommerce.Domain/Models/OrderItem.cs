@@ -1,5 +1,5 @@
-﻿using ECommerce.Domain.Identity;
-using ECommerce.Domain.Models.Base;
+﻿using ECommerce.Domain.Base;
+using ECommerce.Domain.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

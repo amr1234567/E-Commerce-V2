@@ -34,6 +34,14 @@ namespace ECommerce.DataAccess.EFContext.Configurations
                     p => p.ToString(),
                     p => (PaymentMethod)Enum.Parse(typeof(PaymentMethod), p)
                 );
+
+
+
+            builder.HasMany(b => b.OrderLogs)
+                .WithOne(o => o.Order)
+                .HasForeignKey(o => o.OrderId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

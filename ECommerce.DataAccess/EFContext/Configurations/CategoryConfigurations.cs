@@ -15,6 +15,7 @@ namespace ECommerce.DataAccess.EFContext.Configurations
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
+            builder.HasIndex(c => c.Name).IsUnique();
             builder.HasMany(c => c.Products)
                 .WithOne(p => p.Category)
                 .HasForeignKey(p => p.CategoryId)

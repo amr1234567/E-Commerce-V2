@@ -1,7 +1,7 @@
-﻿using ECommerce.Domain.ComplexObjects;
+﻿using ECommerce.Domain.Base;
+using ECommerce.Domain.ComplexObjects;
 using ECommerce.Domain.Enums;
 using ECommerce.Domain.Identity;
-using ECommerce.Domain.Models.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -49,6 +49,8 @@ namespace ECommerce.Domain.Models
         public int DeliveryManId { get; set; }
         [ForeignKey(nameof(DeliveryManId))]
         public DeliveryMan DeliveryMan { get; set; }
+
+        public List<OrderLog> OrderLogs { get; set; }
 
         public List<OrderItem> OrderItems { get; set; }
     }

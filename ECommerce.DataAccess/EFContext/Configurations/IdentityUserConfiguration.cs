@@ -9,12 +9,10 @@ using System.Threading.Tasks;
 
 namespace ECommerce.DataAccess.EFContext.Configurations
 {
-    internal class DiscountConfigurations : IEntityTypeConfiguration<Discount>
+    internal class IdentityUserConfigurations : IEntityTypeConfiguration<Basket>
     {
-        public void Configure(EntityTypeBuilder<Discount> builder)
+        public void Configure(EntityTypeBuilder<Basket> builder)
         {
-            
-
         }
     }
 }

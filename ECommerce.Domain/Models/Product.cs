@@ -1,6 +1,6 @@
-﻿using ECommerce.Domain.ComplexObjects;
+﻿using ECommerce.Domain.Base;
+using ECommerce.Domain.ComplexObjects;
 using ECommerce.Domain.Identity;
-using ECommerce.Domain.Models.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

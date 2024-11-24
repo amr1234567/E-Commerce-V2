@@ -1,4 +1,5 @@
-﻿using ECommerce.Domain.Models.Base;
+﻿using ECommerce.Domain.Base;
+using ECommerce.Domain.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -23,5 +24,7 @@ namespace ECommerce.Domain.Models
         public int CategoryId { get; set; }
         [ForeignKey(nameof(CategoryId))]
         public Category Category { get; set; }
+
+        public List<Customer>? Customers { get; set; }
     }
 }

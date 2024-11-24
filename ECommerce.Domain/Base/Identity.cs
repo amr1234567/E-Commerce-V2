@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECommerce.Domain.Models.Base
+namespace ECommerce.Domain.Base
 {
     public class IdentityBase : BaseClass
     {
@@ -21,5 +21,9 @@ namespace ECommerce.Domain.Models.Base
         public string Password { get; set; }
         [Required]
         public ApplicationRole Role { get; set; }
+        [Required]
+        public string Salt { get; set; }
+
+        public string? RefreshToken { get; set; }
     }
 }

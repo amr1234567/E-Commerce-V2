@@ -20,6 +20,13 @@ namespace ECommerce.DataAccess.EFContext.Configurations
                 p => p.ToString(),
                 p => (ApplicationRole)Enum.Parse(typeof(ApplicationRole), p)
             );
+
+            builder.Property(b => b.DeliveryWay)
+              .HasConversion(
+                  p => p.ToString(),
+                  p => (DeliveryWay)Enum.Parse(typeof(DeliveryWay), p)
+              );
+
             builder.ComplexProperty(d => d.Address, options =>
             {
                 options.Property(a => a.Street).IsRequired();
@@ -30,6 +37,18 @@ namespace ECommerce.DataAccess.EFContext.Configurations
             });
 
             builder.HasMany(d => d.Orders)
+                .WithOne(o => o.DeliveryMan)
+                .HasForeignKey(o => o.DeliveryManId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasMany(d => d.Reviews)
+               .WithOne(o => o.DeliveryMan)
+               .HasForeignKey(o => o.DeliveryManId)
+               .IsRequired()
+               .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasMany(b => b.OrderLogs)
                 .WithOne(o => o.DeliveryMan)
                 .HasForeignKey(o => o.DeliveryManId)
                 .IsRequired()

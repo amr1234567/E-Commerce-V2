@@ -54,6 +54,11 @@ namespace ECommerce.DataAccess.EFContext.Configurations
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade));
 
+            builder.HasMany(d => d.Discounts)
+              .WithMany(c => c.Customers)
+              .UsingEntity<DiscountLog>();
+                
+
             builder.HasMany(c => c.Orders)
                 .WithOne(o => o.Customer)
                 .HasForeignKey(o => o.CustomerId)
