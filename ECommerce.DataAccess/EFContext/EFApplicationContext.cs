@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ECommerce.DataAccess.EFContext
 {
-    internal class EFApplicationContext(DbContextOptions<EFApplicationContext> options) : DbContext(options)
+    public class EFApplicationContext(DbContextOptions<EFApplicationContext> options) : DbContext(options)
     {
 
         public DbSet<WishList> Category { get; set; }

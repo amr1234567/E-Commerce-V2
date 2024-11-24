@@ -1,5 +1,7 @@
 ﻿using ECommerce.DataAccess.DapperContext;
 using ECommerce.DataAccess.EFContext;
+using ECommerce.DataAccess.Repositories;
+using ECommerce.Domain.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,6 +23,7 @@ namespace ECommerce.DataAccess
             });
 
             services.AddSingleton<AppDapperContext>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             return services;
         }
