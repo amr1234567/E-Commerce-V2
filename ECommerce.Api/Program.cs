@@ -1,3 +1,5 @@
+using ECommerce.DataAccess;
+using ECommerce.Services;
 
 namespace ECommerce.Api
 {
@@ -8,6 +10,9 @@ namespace ECommerce.Api
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+
+            builder.Services.AddDataAccessServices(builder.Configuration);
+            builder.Services.AddServicesLayerDI();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
