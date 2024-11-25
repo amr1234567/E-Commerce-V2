@@ -10,6 +10,7 @@ namespace ECommerce.DataAccess.EFContext.Configurations
         public void Configure(EntityTypeBuilder<OrderLog> builder)
         {
             builder.HasKey(o => new { o.OrderId, o.DeliveryManId });
+            builder.Property(p => p.Id).ValueGeneratedOnAdd();
 
             builder.Property(b => b.ResponseType)
              .HasConversion(

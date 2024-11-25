@@ -15,6 +15,8 @@ namespace ECommerce.DataAccess.EFContext.Configurations
     {
         public void Configure(EntityTypeBuilder<DeliveryMan> builder)
         {
+
+            builder.ToTable("DeliveryMen");
             builder.Property(b => b.Role)
             .HasConversion(
                 p => p.ToString(),

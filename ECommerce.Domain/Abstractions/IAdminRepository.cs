@@ -9,6 +9,6 @@ namespace ECommerce.Domain.Abstractions
 {
     public interface IAdminRepository
     {
-        Task<Admin> CreateAdmin(Admin admin);
+        Task<int> CreateAdmin(Admin admin);
     }
 }

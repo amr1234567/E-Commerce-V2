@@ -12,7 +12,8 @@ namespace ECommerce.Domain.Models
     public class Basket : BaseClass
     {
         
-        public decimal TotalPrice { get; set; } = 0;
+        public decimal TotalPriceBeforeDiscount { get; set; } = 0;
+        public decimal TotalPriceAfterDiscount { get; set; } = 0;
         public int NumberOfItems { get; set; } = 0;
 
         public int? DiscountId { get; set; }

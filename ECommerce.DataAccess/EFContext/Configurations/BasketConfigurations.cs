@@ -21,6 +21,8 @@ namespace ECommerce.DataAccess.EFContext.Configurations
 
             builder.HasIndex(b => b.CustomerId)
                 .IsClustered();
+            builder.Property(p => p.Id).ValueGeneratedOnAdd();
+
         }
     }
 }

@@ -20,6 +20,8 @@ namespace ECommerce.DataAccess.EFContext.Configurations
                   p => p.ToString(),
                   p => (ApplicationRole)Enum.Parse(typeof(ApplicationRole), p)
               );
+
+            builder.ToTable(nameof(Admin) + "s");
         }
     }
 }

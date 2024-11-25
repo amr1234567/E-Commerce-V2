@@ -1,0 +1,15 @@
+version: "3.9" # Specify Docker Compose file format version
+
+services:
+  redis:
+    image: redis
+    container_name: e_commerce_redis_container # Assign a name to the container
+    ports:
+      - "6380:6379" # Map Redis port 6379 to the host
+    volumes:
+      - redis_data:/data # Mount the named volume to /data in the container
+    command: ["redis-server", "--appendonly", "yes"] # Enable AOF persistence
+
+volumes:
+  redis_data: # Define the named volume
+    driver: local # Use the default local driver

@@ -1,10 +1,12 @@
 ﻿using ECommerce.Domain.Base;
 using ECommerce.Domain.Identity;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 
 namespace ECommerce.Domain.Models
 {
+    [Table("Categories")]
     public class Category : BaseClass
     {
         [Required]

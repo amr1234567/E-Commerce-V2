@@ -14,6 +14,7 @@ namespace ECommerce.DataAccess.EFContext.Configurations
     {
         public void Configure(EntityTypeBuilder<Order> builder)
         {
+            builder.Property(p => p.Id).ValueGeneratedOnAdd();
             builder.ComplexProperty(c => c.Address, options =>
             {
                 options.Property(a => a.Street).IsRequired();

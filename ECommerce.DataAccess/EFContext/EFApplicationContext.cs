@@ -15,7 +15,7 @@ namespace ECommerce.DataAccess.EFContext
     public class EFApplicationContext(DbContextOptions<EFApplicationContext> options) : DbContext(options)
     {
 
-        public DbSet<WishList> Category { get; set; }
+        public DbSet<Category> Category { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Basket> Baskets { get; set; }
         public DbSet<Discount> Discounts { get; set; }
@@ -32,11 +32,14 @@ namespace ECommerce.DataAccess.EFContext
         public DbSet<IdentityBase> BaseUsers { get; set; }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Customer> Customers { get; set; }
-        public DbSet<DeliveryMan> DeliveryMens { get; set; }
+        public DbSet<DeliveryMan> DeliveryMen { get; set; }
         public DbSet<Provider> Providers { get; set; }
+
+       
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CategoryConfigurations).Assembly);
+         
             base.OnModelCreating(modelBuilder);
         }
 

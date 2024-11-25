@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ECommerce.DataAccess.DapperContext
 {
-    internal class AppDapperContext(IConfiguration configuration)
+    public class AppDapperContext(IConfiguration configuration)
     {
         private string connectionString => configuration.GetConnectionString("Def") ?? string.Empty;
 

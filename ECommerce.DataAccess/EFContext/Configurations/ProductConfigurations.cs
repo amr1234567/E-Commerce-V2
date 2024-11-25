@@ -13,6 +13,7 @@ namespace ECommerce.DataAccess.EFContext.Configurations
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
+            builder.Property(p => p.Id).ValueGeneratedOnAdd();
             //builder.ComplexProperty(p => p.ProductDiscount, options =>
             //{
             //    options.Property(d => d.StartFrom)

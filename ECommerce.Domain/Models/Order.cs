@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Domain.Models
 {
+    [Table("Orders")]
     public class Order : BaseClass
     {
         [Required]
@@ -28,7 +29,7 @@ namespace ECommerce.Domain.Models
         [Required]
         public DateTime OrderedAt { get; init; } = DateTime.UtcNow;
         public DateTime? ReachedDeliveryAt { get; set; }
-        public DateTime? DeliveredAt { get; init; }
+        public DateTime? DeliveredAt { get; set; }
 
         [Required]
         public int TimeExpectedToDelivered { get; set; } 
@@ -37,7 +38,7 @@ namespace ECommerce.Domain.Models
         public PaymentMethod PaymentMethod { get; set; }
 
         [Required]
-        public OrderStatus OrderStatus { get; set; }
+        public OrderStatus OrderStatus { get; set; } = OrderStatus.Created;
 
         public int? DiscountId { get; set; }
         [ForeignKey(nameof(DiscountId))]
@@ -56,5 +57,21 @@ namespace ECommerce.Domain.Models
         public List<OrderLog> OrderLogs { get; set; }
 
         public List<OrderItem> OrderItems { get; set; }
+
+        public static Order GenerateFromBasket(Basket basket)
+        {
+            ArgumentNullException.ThrowIfNull(basket, nameof(basket));
+            ArgumentNullException.ThrowIfNull(basket.OrderItems, nameof(basket));
+            ArgumentOutOfRangeException.ThrowIfLessThan(basket.OrderItems.Count, 1);
+
+            return new()
+            {
+                OrderItems = basket.OrderItems,
+                TotalPriceAfterDiscount = basket.TotalPriceAfterDiscount,
+                TotalPriceBeforeDiscount = basket.TotalPriceBeforeDiscount,
+                DiscountId = basket.DiscountId,
+                CustomerId = basket.CustomerId,
+            };
+        }
     }
 }

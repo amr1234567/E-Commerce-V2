@@ -12,7 +12,7 @@ namespace ECommerce.Domain.Abstractions
         Task<int> CreateCategory(Category category);
         Task<Category> GetById(int id);
         Task<List<Category>> GetCategories(int page = 1, int size = 10);
-        Task<Category> UpdateCategory(Category category);
-        Task<Category> DeleteCategory(int categoryId);
+        Task<int> UpdateCategory(Category category);
+        Task<int> DeleteCategory(int categoryId);
     }
 }

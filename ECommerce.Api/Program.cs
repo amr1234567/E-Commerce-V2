@@ -32,7 +32,7 @@ namespace ECommerce.Api
 
             app.UseAuthorization();
 
-
+            app.UseDataAccess();
             app.MapControllers();
 
             app.Run();

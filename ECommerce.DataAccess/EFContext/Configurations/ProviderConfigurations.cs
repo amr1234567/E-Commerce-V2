@@ -15,6 +15,9 @@ namespace ECommerce.DataAccess.EFContext.Configurations
     {
         public void Configure(EntityTypeBuilder<Provider> builder)
         {
+            builder.Property(p => p.Id).ValueGeneratedOnAdd();
+            builder.ToTable(nameof(Provider) + "s");
+
             builder.Property(b => b.Role)
             .HasConversion(
                 p => p.ToString(),

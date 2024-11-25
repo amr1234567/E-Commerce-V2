@@ -13,6 +13,8 @@ namespace ECommerce.DataAccess.EFContext.Configurations
     {
         public void Configure(EntityTypeBuilder<Image> builder)
         {
+            builder.Property(p => p.Id).ValueGeneratedOnAdd();
+
         }
     }
 }

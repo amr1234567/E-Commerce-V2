@@ -10,15 +10,15 @@ namespace ECommerce.Domain.Abstractions
     public interface IBasketRepository
     {
         Task<int> CreateNewBasket(Basket basket);
-        Task<Basket> DeleteBasketById(int basketId);
-        Task<Basket> DeleteBasketByCustomerId(int customerId);
+        Task<int> DeleteBasketById(int basketId);
+        Task<int> DeleteBasketByCustomerId(int customerId);
         Task<Basket> GetBasketById(int id);
         Task<Basket> GetBasketByCustomerId(int customerId);
-        Task<Basket> AddProduct(Product product);
-        Task<Basket> AddProduct(int productId);
-        Task<Basket> AddProductRange(params Product[] product);
-        Task<Basket> AddProductRange(params int[] productId);
-        Task<Basket> RemoveProduct(int productId);
-        Task<Basket> RemoveProductRange(params int[] productId);
+        Task<int> AddProduct(int basketId,Product product);
+        Task<int> AddProduct(int basketId, int productId);
+        Task<int> AddProductRange(int basketId, params Product[] product);
+        Task<int> AddProductRange(int basketId, params int[] productId);
+        Task<int> RemoveProduct(int basketId, int productId);
+        Task<int> RemoveProductRange(int basketId, params int[] productId);
     }
 }

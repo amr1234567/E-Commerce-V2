@@ -13,6 +13,7 @@ namespace ECommerce.DataAccess.EFContext.Configurations
     {
         public void Configure(EntityTypeBuilder<WishList> builder)
         {
+            builder.Property(p => p.Id).ValueGeneratedOnAdd();
         }
     }
 }

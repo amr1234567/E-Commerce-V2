@@ -42,6 +42,8 @@ namespace ECommerce.DataAccess.EFContext.Configurations
                     .HasForeignKey("CategoryId")
                     .IsRequired()
                     .OnDelete(DeleteBehavior.Restrict));
+            builder.Property(p => p.Id).ValueGeneratedOnAdd();
+
         }
     }
 }

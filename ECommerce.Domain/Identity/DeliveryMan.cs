@@ -13,7 +13,7 @@ namespace ECommerce.Domain.Identity
 {
     public class DeliveryMan : IdentityBase
     {
-        public bool IsConfirmedAsDeliveryMan { get; set; }
+        public bool? IsConfirmedAsDeliveryMan { get; set; } = null;
         [Range(0,5)]
         public double Rate {  get; set; }
 

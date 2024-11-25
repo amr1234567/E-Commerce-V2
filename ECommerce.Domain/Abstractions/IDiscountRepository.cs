@@ -11,8 +11,8 @@ namespace ECommerce.Domain.Abstractions
     {
         Task<int> CreateDiscount(Discount discount);
         Task<Discount> GetById(int id);
-        Task<Discount> UpdateDiscount(Discount discount);
-        Task<Discount> DeleteDiscount(int discountId);
-        Task<DiscountLog> UseDiscount(DiscountLog discountLog);
+        Task<int> UpdateDiscount(Discount discount);
+        Task<int> DeleteDiscount(int discountId);
+        Task<DiscountLog> UseDiscount(int discountId, int customerId);
     }
 }

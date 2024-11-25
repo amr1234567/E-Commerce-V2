@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Domain.Models
 {
+    [Table("DiscountLogs")]
     public class DiscountLog
     {
         [Required]
@@ -24,7 +25,7 @@ namespace ECommerce.Domain.Models
         public Customer Customer { get; set; }
 
         [Required]
-        public DateTime AppliedDate { get; set; } 
+        public DateTime AppliedDate { get; init; } = DateTime.UtcNow; 
         
     }
 }

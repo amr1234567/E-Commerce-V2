@@ -15,6 +15,9 @@ namespace ECommerce.DataAccess.EFContext.Configurations
     {
         public void Configure(EntityTypeBuilder<Customer> builder)
         {
+
+            builder.ToTable(nameof(Customer) + "s");
+
             builder.Property(b => b.Role)
             .HasConversion(
                 p => p.ToString(),
