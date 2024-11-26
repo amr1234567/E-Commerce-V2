@@ -10,5 +10,6 @@ namespace ECommerce.Domain.Abstractions
     public interface ICustomerRepository
     {
         Task<Customer> CreateCustomer(Customer customer);
+        Task<int> AddProviderToFavorite(int customerId, int providerId);
     }
 }

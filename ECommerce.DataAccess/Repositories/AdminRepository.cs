@@ -1,14 +1,4 @@
-﻿using ECommerce.DataAccess.EFContext;
-using ECommerce.DataAccess.Exceptions;
-using ECommerce.Domain.Abstractions;
-using ECommerce.Domain.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ECommerce.DataAccess.Repositories
+﻿namespace ECommerce.DataAccess.Repositories
 {
     public class AdminRepository
         (EFApplicationContext context,IUserRepository userRepository, ILogger<AdminRepository> logger)

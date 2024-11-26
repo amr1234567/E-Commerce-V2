@@ -1,13 +1,10 @@
-﻿using ECommerce.DataAccess.DapperContext;
-using ECommerce.DataAccess.EFContext;
-using ECommerce.DataAccess.Repositories;
-using ECommerce.Domain.Abstractions;
+﻿using ECommerce.DataAccess.Repositories;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 
 namespace ECommerce.DataAccess
 {
@@ -26,6 +23,11 @@ namespace ECommerce.DataAccess
             });
 
             services.AddSingleton<AppDapperContext>();
+
+            Log.Logger = new LoggerConfiguration()
+                    .WriteTo.Console()
+                    .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
+                    .CreateLogger();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IAdminRepository, AdminRepository>();
@@ -50,15 +52,17 @@ namespace ECommerce.DataAccess
             return services;
         }
 
-        public static WebApplication UseDataAccess(this WebApplication application)
+        public static WebApplication UseDataAccess(this WebApplication app)
         {
 
-            application.UseHealthChecks("/health", new HealthCheckOptions
+            app.UseHealthChecks("/health", new HealthCheckOptions
             {
                 ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
             });
 
-            return application;
+            //app.UseSerilogRequestLogging();
+
+            return app;
         }
     }
 }

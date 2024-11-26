@@ -1,23 +1,11 @@
 ﻿using ECommerce.DataAccess.Constants;
-using ECommerce.DataAccess.EFContext;
-using ECommerce.DataAccess.Exceptions;
-using ECommerce.Domain.Abstractions;
-using ECommerce.Domain.Identity;
-using ECommerce.Domain.Models;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
-using Microsoft.Extensions.Caching.StackExchangeRedis;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace ECommerce.DataAccess.Repositories
 {
     public class BasketRepository
-        (EFApplicationContext context,IProductRepository productRepository, IDistributedCache redisCache)
+        (EFApplicationContext context,IProductRepository productRepository, IDistributedCache redisCache,ILogger<BasketRepository> logger)
         : IBasketRepository
     {
         public async Task<int> AddProduct(int basketId, Product product)
@@ -28,8 +16,9 @@ namespace ECommerce.DataAccess.Repositories
                 await AddingOrderItemFunctionality(basket, product);
                 return 1;
             }
-            catch
+            catch (Exception ex) 
             {
+                logger.LogError(ex.Message);
                 return 0;
             }
         }
@@ -163,7 +152,9 @@ namespace ECommerce.DataAccess.Repositories
         {
             if (basket.OrderItems is not null && basket.OrderItems.Any(o => o.ProductId == product.Id))
             {
-                var orderItem = await context.OrderItems.FirstOrDefaultAsync(o => o.BasketId == basket.Id && o.ProductId == product.Id);
+                logger.LogDebug($"product with id {product.Id} FOUND in basket with id '{basket.Id}'");
+                var orderItem = await context.OrderItems
+                    .FirstOrDefaultAsync(o => o.BasketId == basket.Id && o.ProductId == product.Id);
                 if (orderItem != null)
                 {
                     orderItem.Quantity++;
@@ -183,6 +174,7 @@ namespace ECommerce.DataAccess.Repositories
             }
             else
             {
+                logger.LogDebug($"product with id {product.Id} NOT FOUND in basket with id '{basket.Id}'");
                 var newOrderItem = new OrderItem
                 {
                     BasketId = basket.Id,

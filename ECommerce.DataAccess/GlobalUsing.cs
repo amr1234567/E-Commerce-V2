@@ -1,5 +1,4 @@
 ﻿global using ECommerce.DataAccess.Exceptions;
-
 global using ECommerce.DataAccess.DapperContext;
 global using ECommerce.DataAccess.EFContext;
 global using ECommerce.Domain;

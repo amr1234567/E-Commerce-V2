@@ -1,21 +1,8 @@
 ﻿using Dapper;
 using ECommerce.DataAccess.Constants;
-using ECommerce.DataAccess.DapperContext;
-using ECommerce.DataAccess.EFContext;
-using ECommerce.DataAccess.Exceptions;
-using ECommerce.Domain.Abstractions;
-using ECommerce.Domain.Models;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
-using Microsoft.Extensions.Caching.StackExchangeRedis;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
 
 
 namespace ECommerce.DataAccess.Repositories
@@ -91,7 +78,7 @@ namespace ECommerce.DataAccess.Repositories
 
             // ---- DB ----
             var sqlQuery = "Select * from Categories Order by Name Offset @skip ROWS fetch NEXT @size ROWS ONLY";
-            var parameters = new {page = page - 1, size};
+            var parameters = new { skip = (page - 1) * size, size};
             var categories = await dbConnection.QueryAsync<Category>(sqlQuery, parameters);
 
             //--- Cashing --- 

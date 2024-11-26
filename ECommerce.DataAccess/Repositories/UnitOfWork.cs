@@ -1,12 +1,4 @@
-﻿using ECommerce.DataAccess.EFContext;
-using ECommerce.Domain.Abstractions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ECommerce.DataAccess.Repositories
+﻿namespace ECommerce.DataAccess.Repositories
 {
     public class UnitOfWork(EFApplicationContext context) : IUnitOfWork
     {

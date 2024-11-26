@@ -10,16 +10,14 @@ namespace ECommerce.Domain.Abstractions
 {
     public interface IProductRepository
     {
-        Task<List<Product>> GetAll(int page = 1, int size = 1);
-        Task<List<Product>> GetAllByCategoryId(int categoryId,int page = 1, int size = 1);
-        Task<List<Product>> GetAllByProvider(int providerId,int page = 1, int size = 1);
-        Task<List<Product>> GetAllByCategoryAndProvider(int categoryId,int providerId ,int page = 1, int size = 1);
+        Task<List<Product>> GetAll(int page = 1, int size = 10);
+        Task<List<Product>> GetAllByCategoryAndProvider(int? categoryId,int? providerId ,int page = 1, int size = 10);
         Task<List<Product>> GetSimilarToProduct(int productId);
         Task<Product> GetProductById(int productId);
         Task<Product> UpdateProduct(Product product);
         Task<Product> DeleteProduct(int productId);
         Task<Product> CreateProduct(Product product);
         Task<Product> AddDiscountToProduct(int productId,ProductDiscount productDiscount);
-        Task<Product> RemoveDiscountToProduct(int productId);
+        Task<Product> RemoveDiscountFromProduct(int productId);
     }
 }

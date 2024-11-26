@@ -1,12 +1,5 @@
-﻿using ECommerce.Domain.Abstractions;
-using ECommerce.Domain.ComplexObjects;
+﻿using ECommerce.Domain.ComplexObjects;
 using ECommerce.Domain.Enums;
-using ECommerce.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ECommerce.DataAccess.Repositories
 {

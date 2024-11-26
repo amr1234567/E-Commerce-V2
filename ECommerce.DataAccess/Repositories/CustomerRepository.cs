@@ -1,17 +1,8 @@
-﻿using ECommerce.DataAccess.EFContext;
-using ECommerce.DataAccess.Exceptions;
-using ECommerce.Domain.Abstractions;
-using ECommerce.Domain.Identity;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ECommerce.DataAccess.Repositories
+﻿namespace ECommerce.DataAccess.Repositories
 {
-    public class CustomerRepository(EFApplicationContext context) : ICustomerRepository
+    public class CustomerRepository
+        (EFApplicationContext context,IUserRepository userRepository, ILogger<CustomerRepository> logger)
+        : ICustomerRepository
     {
         public async Task<Customer> CreateCustomer(Customer customer)
         {
@@ -24,6 +15,26 @@ namespace ECommerce.DataAccess.Repositories
 
             await context.Customers.AddAsync(customer);
             return customer;
+        }
+
+        public async Task<int> AddProviderToFavorite(int customerId, int providerId)
+        {
+            var user = await userRepository.GetUserById(providerId);
+            
+            if (user == null || user is not Provider)
+                throw new EntityNotFoundException(typeof(Provider), providerId);
+            logger.LogDebug($"Provider with id '{providerId}' FOUND");
+
+            var customer = await context.Customers
+                .Include(c => c.FavProviders!.Where(p => p.Id == providerId))
+                .FirstOrDefaultAsync(x => x.Id == customerId)
+                ?? throw new EntityNotFoundException(typeof(Customer), customerId);
+
+            logger.LogDebug($"Customer with id '{customerId}' FOUND");
+
+            customer.FavProviders ??= [];
+            customer.FavProviders.Add((Provider)user);
+            return customer.Id;
         }
     }
 }

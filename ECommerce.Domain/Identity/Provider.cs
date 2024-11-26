@@ -21,6 +21,9 @@ namespace ECommerce.Domain.Identity
 
         public string? Description { get; set; }
 
+        [Range(0,5)]
+        public decimal Rate { get; set; }
+
         public List<Product> Products { get; set; }
         public List<Category> Categories { get; set; }
         public List<Image>? Images { get; set; }
