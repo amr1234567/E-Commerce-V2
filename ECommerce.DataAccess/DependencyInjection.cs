@@ -43,6 +43,7 @@ namespace ECommerce.DataAccess
             services.AddScoped<ITicketRepository, TicketRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IWishListRepository, WishListRepository>();
+            services.AddScoped<IImageRepository, ImageRepository>();
 
 
             services.AddHealthChecks()

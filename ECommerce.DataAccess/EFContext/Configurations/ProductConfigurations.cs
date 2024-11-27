@@ -14,6 +14,8 @@ namespace ECommerce.DataAccess.EFContext.Configurations
         public void Configure(EntityTypeBuilder<Product> builder)
         {
             builder.Property(p => p.Id).ValueGeneratedOnAdd();
+            builder.HasKey(p => p.Id);
+            builder.HasIndex(p => p.Id);
             //builder.ComplexProperty(p => p.ProductDiscount, options =>
             //{
             //    options.Property(d => d.StartFrom)
@@ -27,6 +29,7 @@ namespace ECommerce.DataAccess.EFContext.Configurations
 
             //    options.Property(d => d.DiscountAmount)
             //        .HasColumnType("decimal(18,2)").IsRequired(false); // Represents the discount amount
+            //    options.IsRequired();
             //});
         }
     }

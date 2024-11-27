@@ -10,7 +10,7 @@ namespace ECommerce.Domain.Abstractions
     public interface IWishListRepository
     {
         Task<WishList> CreateWishList(WishList wishList);
-        Task<WishList> DeleteWishList(int id);
+        Task<int> DeleteWishList(int id);
         Task<WishList> UpdateWishList(WishList wishList);
         Task<WishList> GetWishList(int id);
         Task<List<WishList>> GetAllForCustomer(int customerId);
@@ -18,5 +18,7 @@ namespace ECommerce.Domain.Abstractions
         Task<WishList> AddProductsToWishList(int wishListId, params int[] productIds);
         Task DeleteProductsFromWishList(int wishListId, params Product[] products);
         Task DeleteProductsFromWishList(int wishListId, params int[] products);
+        Task<WishList> AddProductsToWishList(int customerId, string wishListName, params Product[] products);
+        Task<WishList> AddProductsToWishList(int customerId, string wishListName, params int[] productIds);
     }
 }

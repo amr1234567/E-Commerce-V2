@@ -11,5 +11,8 @@ namespace ECommerce.Domain.Abstractions
     {
         Task<int> CreateTicket(Ticket ticket);
         Task<int> DeleteTicket(int ticketId);
+        Task<int> EndTicket(int ticketId);
+        Task<Ticket> GetTicket(int ticketId);
+        Task<List<Ticket>> GetAll(bool? isCompleted, int page = 1, int size = 10);
     }
 }

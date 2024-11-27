@@ -10,8 +10,7 @@ namespace ECommerce.Domain.Abstractions
     public interface IImageRepository
     {
         Task<int> AssignImageForProvider(Image image, int providerId);
-        Task<int> RemoveImageFromProvider(int imageId, int providerId);
         Task<int> AssignImageForProduct(Image image, int productId);
-        Task<int> RemoveImageFromProduct(int imageId, int productId);
+        Task<int> RemoveImage(int imageId);
     }
 }

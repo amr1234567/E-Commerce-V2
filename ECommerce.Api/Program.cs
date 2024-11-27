@@ -1,5 +1,8 @@
+using ECommerce.Api.Helpers;
 using ECommerce.DataAccess;
 using ECommerce.Services;
+using ECommerce.Services.Helpers;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ECommerce.Api
 {
@@ -12,12 +15,9 @@ namespace ECommerce.Api
             // Add services to the container.
 
             builder.Services.AddDataAccessServices(builder.Configuration);
-            builder.Services.AddServicesLayerDI();
-
-            builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+           
+            builder.Services.AddServicesLayerDI(builder.Configuration);
+            builder.Services.AddApiLayerServices(builder.Configuration);
 
             var app = builder.Build();
 
@@ -33,6 +33,7 @@ namespace ECommerce.Api
             app.UseAuthorization();
 
             app.UseDataAccess();
+            app.UseApiLayer();
             app.MapControllers();
 
             app.Run();

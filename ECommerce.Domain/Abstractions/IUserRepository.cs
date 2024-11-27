@@ -11,7 +11,10 @@ namespace ECommerce.Domain.Abstractions
     {
         Task<IdentityBase> GetUserById(int id);
         Task<IdentityBase> GetUserByEmail(string email);
-        Task<IdentityBase> UpdateUser(string? newPassword, string? newName);
+        Task<IdentityBase> UpdateUser(IdentityBase identityBase);
+        Task<int> UpdateAllWithFunc(Action<IdentityBase> action);
         Task<int> BlockAccount(int id);
+        Task<int> UpdateByCriteriaWithFunc(Func<IdentityBase,bool> predicate, Action<IdentityBase> action);
+        Task<IdentityBase> GetUserByCriteria(Func<IdentityBase, bool> criteria);
     }
 }

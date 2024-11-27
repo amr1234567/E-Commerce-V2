@@ -15,6 +15,7 @@ namespace ECommerce.DataAccess.EFContext.Configurations
         public void Configure(EntityTypeBuilder<IdentityBase> builder)
         {
             builder.Property(p => p.Id).ValueGeneratedOnAdd();
+            builder.HasIndex(p => p.Email).IsUnique();
             builder.ToTable("IdentityUsers");
         }
     }

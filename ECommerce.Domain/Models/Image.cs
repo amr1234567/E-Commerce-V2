@@ -24,5 +24,13 @@ namespace ECommerce.Domain.Models
         public int? ProviderId { get; set; }
         [ForeignKey(nameof(ProviderId))]
         public Provider? Provider { get; set; }
+
+        public static Image Create(string url)
+        {
+            return new Image
+            {
+                Url = url,
+            };
+        }
     }
 }

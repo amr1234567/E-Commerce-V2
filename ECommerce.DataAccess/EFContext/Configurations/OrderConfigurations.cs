@@ -15,6 +15,7 @@ namespace ECommerce.DataAccess.EFContext.Configurations
         public void Configure(EntityTypeBuilder<Order> builder)
         {
             builder.Property(p => p.Id).ValueGeneratedOnAdd();
+            builder.HasKey(p => p.Id);
             builder.ComplexProperty(c => c.Address, options =>
             {
                 options.Property(a => a.Street).IsRequired();
@@ -41,9 +42,6 @@ namespace ECommerce.DataAccess.EFContext.Configurations
                    p => p.ToString(),
                    p => (OrderStatus)Enum.Parse(typeof(OrderStatus), p)
                );
-
-
-
             builder.HasMany(b => b.OrderLogs)
                 .WithOne(o => o.Order)
                 .HasForeignKey(o => o.OrderId)

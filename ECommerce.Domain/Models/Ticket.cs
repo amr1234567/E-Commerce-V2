@@ -15,6 +15,12 @@ namespace ECommerce.Domain.Models
         [Required]
         [StringLength(255)]
         public string Text { get; set; }
+        public bool IsCompleted { get; set; } = false;
+
+        [Required]
+        [Range(0,10)]
+        public int Priority { get; set; }
+
         public int? CustomerId { get; set; }
         [ForeignKey(nameof(CustomerId))]
         public Customer? Customer { get; set; }

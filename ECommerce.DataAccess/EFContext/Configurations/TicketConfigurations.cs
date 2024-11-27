@@ -14,6 +14,8 @@ namespace ECommerce.DataAccess.EFContext.Configurations
         public void Configure(EntityTypeBuilder<Ticket> builder)
         {
             builder.Property(p => p.Id).ValueGeneratedOnAdd();
+            builder.HasKey(p => p.Id);
+
         }
     }
 }

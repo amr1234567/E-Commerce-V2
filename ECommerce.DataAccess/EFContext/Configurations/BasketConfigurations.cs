@@ -19,8 +19,7 @@ namespace ECommerce.DataAccess.EFContext.Configurations
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.HasIndex(b => b.CustomerId)
-                .IsClustered();
+            builder.HasKey(p => p.Id);
             builder.Property(p => p.Id).ValueGeneratedOnAdd();
 
         }

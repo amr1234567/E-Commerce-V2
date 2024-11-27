@@ -19,6 +19,8 @@ namespace ECommerce.Domain.Models
         [StringLength(255)]
         public string? Description { get; set; }
 
+        public DateTime CreatedDate { get; init; } = DateTime.UtcNow;
+
         public int CustomerId { get; set; }
         [ForeignKey(nameof(CustomerId))]
         public Customer Customer { get; set; }

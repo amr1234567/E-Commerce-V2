@@ -24,6 +24,9 @@ namespace ECommerce.Domain.Base
         [Required]
         public string Salt { get; set; }
 
+        public bool IsBlocked { get; set; } = false;
+
         public string? RefreshToken { get; set; }
+        public DateTime? RefreshTokenExpires { get; set; }
     }
 }

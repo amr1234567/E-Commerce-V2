@@ -14,8 +14,8 @@ namespace ECommerce.DataAccess.EFContext.Configurations
         public void Configure(EntityTypeBuilder<Discount> builder)
         {
             builder.Property(p => p.Id).ValueGeneratedOnAdd();
-
-
+            builder.HasIndex(p=> p.Id).IsUnique();
+            builder.HasKey(p => p.Id);
         }
     }
 }
