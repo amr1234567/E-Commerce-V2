@@ -84,8 +84,6 @@ namespace ECommerce.Services.Services
             return true;
         }
 
-
-
         private Task<string> GenerateNewRefreshToken()
         {
             var randomNumber = new byte[32];
